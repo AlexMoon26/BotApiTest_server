@@ -7,7 +7,7 @@ async function bootstrap() {
   const config = app.get(ConfigService)
 
   app.enableCors({
-    origin: process.env.ALLOWED_ORIGIN,
+    origin: "https://bot-api-test.vercel.app",
     credentials: true,
     exposedHeaders: ['set-cookie']
   });
