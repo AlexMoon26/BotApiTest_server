@@ -11,7 +11,6 @@ export class AuthController {
     async telegramAuth(@Body() dto: LoginTelegramDto) {
         let user = await this.authService.validateTelegramUser(dto);
 
-
         return {
             access_token: this.jwtService.sign({ sub: user.id }),
             user: user

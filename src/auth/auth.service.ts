@@ -21,15 +21,15 @@ export class AuthService {
                 payload
             );
             await this.telegramBotService.requestPhoneVerification(user.telegramId);
-            return user
+            return { ...user }
         }
 
         if (!user.isPhoneVerified) {
             await this.telegramBotService.requestPhoneVerification(user.telegramId);
 
-            return user;
+            return { ...user };
         }
-        return user
+        return { ...user }
     }
 
 }

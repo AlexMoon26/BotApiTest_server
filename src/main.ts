@@ -7,9 +7,10 @@ async function bootstrap() {
   const config = app.get(ConfigService)
 
   app.enableCors({
-    origin: "https://bot-api-test.vercel.app",
+    origin: true,
     credentials: true,
-    exposedHeaders: ['set-cookie']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   await app.listen(4001, () => console.log("Сервер запущен!")
