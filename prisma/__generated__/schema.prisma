@@ -1,0 +1,25 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./__generated__"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URI")
+}
+
+model User {
+  id              String   @id @default(uuid())
+  telegramId      String   @unique
+  firstName       String
+  lastName        String?
+  nickName        String?  @unique
+  phone           String?
+  picture         String?
+  isPhoneVerified Boolean  @default(false)
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
